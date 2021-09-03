@@ -30,11 +30,11 @@ class Form
     private string $action;
     private array $fields;
     private string $method;
-    
+  
 
 
      // constructor METODU
-    function __construct($action, $method)
+    function __construct(string $action, string $method)
     {
         $this->action = $action;
         $this->method = $method;
@@ -79,3 +79,4 @@ class Form
    }
 
 
+//   https://www.php.net/manual/tr/language.oop5.decon.php  
