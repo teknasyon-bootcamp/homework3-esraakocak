@@ -26,12 +26,12 @@
  */
 class Form
 {
-   
+
     private string $action;
-   
 
 
 
+    // constructor METODU
     function __construct($action, $method)
     {
         $this->action = $action;
@@ -40,40 +40,37 @@ class Form
 
     public static function createPostForm(string $action)
     {
-        return new static ($action,"POST");
+        return new static($action, "POST");
     }
     public static function createGetForm(string $action)
     {
-        return new static ($action,"GET");
+        return new static($action, "GET");
     }
 
-   public static function createForm(string $action,string $method) {
-       return new static($action,$method);
-            
-   }
-
-   public function addField(string $label, string $name, ?string $defaultValue=null):void {
-          $field=[$label,$name,$defaultValue];
-          $this->fields[] = $field;
-
-   }
-   public function setMethod (string $method):void {
-         $this->method=$method;
-   }
-
-   public function render ():void {
-         
-      echo " <form method='$this->method' action='$this->action' >";
-      foreach ($this->fields as $field) { // 
-        echo "<label for='$field[1]'>$field[0]</label> &nbsp"; 
-        echo "<input type='text' name='$field[1]'  value='$field[2]' />&nbsp"; 
+    public static function createForm(string $action, string $method)
+    {  //Form oluşturmak için kullanılan fonksiyon
+        return new static($action, $method);
     }
-    echo "<button type='submit'>Gönder</button>"; 
-    echo "</form>"; 
+
+    public function addField(string $label, string $name, ?string $defaultValue = null): void
+    { //label, Name, defaultvalue değerlerini al ama defaultvalue değeri verilmese bile varsayılan değeri null olarak al.
+        $field = [$label, $name, $defaultValue];
+        $this->fields[] = $field;
+    }
+    public function setMethod(string $method): void
+    {
+        $this->method = $method;
+    }
+
+    public function render(): void
+    {
+
+        echo " <form method='$this->method' action='$this->action' >";
+        foreach ($this->fields as $field) { // 
+            echo "<label for='$field[1]'>$field[0]</label> &nbsp";
+            echo "<input type='text' name='$field[1]'  value='$field[2]' />&nbsp";
+        }
+        echo "<button type='submit'>Gönder</button>";
+        echo "</form>";
+    }
 }
-
-       
-
-   }
-
-
