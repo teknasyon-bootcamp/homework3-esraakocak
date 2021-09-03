@@ -28,8 +28,7 @@ class Form
 {
    
     private string $action;
-    private array $fields;
-    private string $method;
+   
 
 
 
